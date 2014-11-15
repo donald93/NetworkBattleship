@@ -12,6 +12,9 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Created by Donald on 10/29/14.
@@ -36,6 +39,7 @@ public class BattleshipListAdapter extends ArrayAdapter
     public void refreshGamesList()
     {
         this.clear();
+        gameDetailList.clear();
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -65,6 +69,24 @@ public class BattleshipListAdapter extends ArrayAdapter
                     }
                 });
                 thread2.start();
+            }
+        }
+
+        int j = 0;
+        while(gameDetailList.size() == 0 && j != 3)
+        {
+            try
+            {
+                synchronized (this)
+                {
+                    this.wait(1000);
+
+                }
+                j += 1;
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
             }
         }
 

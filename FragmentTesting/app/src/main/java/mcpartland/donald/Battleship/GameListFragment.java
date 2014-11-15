@@ -88,7 +88,9 @@ public class GameListFragment extends Fragment
         });
 
         layout.addView(RefreshGamesButton, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER, 1));
-        layout.addView(gamesListView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER, 9));
+        layout.addView(NewGameButton, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER, 1));
+
+        layout.addView(gamesListView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER, 8));
 
         return layout;
     }
