@@ -14,10 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
@@ -52,19 +48,6 @@ public class GameListFragment extends Fragment
             @Override
             public void onClick(View v) {
                 //TODO make call to create new game
-
-                Thread thread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        String s = new CreateNewGame().doInBackground("X");
-                        Gson gson = new Gson();
-                        Type gameListType = new TypeToken<ArrayList<NetworkGame>>(){}.getType();
-                        //gamesl = gson.fromJson(gameList, gameListType);
-
-
-                    }
-                });
-                thread.start();
             }
         });
 
@@ -105,9 +88,13 @@ public class GameListFragment extends Fragment
         });
 
         layout.addView(RefreshGamesButton, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER, 1));
+<<<<<<< HEAD
         layout.addView(NewGameButton, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER, 1));
 
         layout.addView(gamesListView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER, 8));
+=======
+        layout.addView(gamesListView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER, 9));
+>>>>>>> parent of 254cbcb... changed things
 
         return layout;
     }
